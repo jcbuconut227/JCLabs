@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of John Carl Alvaro (JC), a 4th-year BSIT student focused on cybersecurity, with Cisco and DICT certifications."
+    />
+    <title>JC Alvaro — Cybersecurity Student Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23d7ff45'/%3E%3Cstop offset='1' stop-color='%2355ff87'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' text-anchor='middle' fill='%23071008'%3EJC%3C/text%3E%3C/svg%3E" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {
+        // Use the dark default when storage is unavailable.
+      }
+    </script>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#home" class="logo">
+          <span class="logo-mark">JC</span>
+          <span class="logo-text">JC<span>.</span></span>
+        </a>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#experience">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="nav-socials">
+            <a href="https://github.com/jcbuconut227" aria-label="GitHub" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.5-3.6 4.9 4.9 0 0 0-.1-3.6s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.1 1.2 4.9 1.6 4.9 1.6a4.9 4.9 0 0 0-.1 3.6A5.2 5.2 0 0 0 3.3 8.8c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/john-carl-alvaro-2b11053b2/" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          </button>
+          <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Toggle menu">
+            <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="home">
+        <div class="hero-blobs" aria-hidden="true">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
+        </div>
+
+        <div class="container hero-content">
+          <span class="badge reveal">
+            <span class="pulse"></span>
+            Open to internships &amp; entry-level roles
+          </span>
+
+          <h1 class="reveal delay-1">
+            Hi, I'm <span class="gradient-text">John Carl Alvaro</span>
+          </h1>
+          <p class="hero-role reveal delay-2">IT Student &amp; Aspiring Cybersecurity Analyst</p>
+          <p class="hero-tagline reveal delay-3">
+            I'm a 4th-year BSIT student from Plaridel, Bulacan. I'm into cybersecurity: how systems get attacked and how to keep them safe.
+          </p>
+
+          <div class="hero-meta reveal delay-3">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Plaridel, Bulacan
+            </span>
+            <a href="mailto:alvarojohncarl495@gmail.com">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+              alvarojohncarl495@gmail.com
+            </a>
+          </div>
+
+          <div class="hero-cta reveal delay-4">
+            <a href="#projects" class="btn btn-primary">
+              View my projects
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="/resume.pdf" download class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+              Download resume
+            </a>
+          </div>
+
+          <div class="stats reveal delay-5">
+            <div class="stat">
+              <strong>4th</strong>
+              <span>Year Student</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>Projects Built</span>
+            </div>
+            <div class="stat">
+              <strong>4</strong>
+              <span>Certifications</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">About me</p>
+            <h2>Curious about the dark corners of the internet, and wanting to make it safer.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-text reveal">
+              <p>
+                I'm John Carl Alvaro, but everyone calls me JC. I'm a 4th-year IT
+                student from Plaridel, Bulacan, and cybersecurity is the part of IT I
+                enjoy most.
+              </p>
+              <p>
+                What got me into it is how much I enjoy digging into the parts of the
+                internet most people never see. I want to help make it safer for the
+                people who need it. I go to cybersecurity seminars, read up on how
+                different types of viruses work, and risk management is my favorite
+                topic in class.
+              </p>
+              <p>
+                I've built SariSync, a POS and inventory system, and Anatomia, a 3D
+                anatomy learning app for my capstone. I'm also Vice Chairman of my
+                parish's youth commission (SPCY), where I lead event planning and logistics,
+                so I'm used to working with people.
+              </p>
+              <p>
+                I'm not chasing one specific role yet. I want to learn how the industry
+                really works and meet people who've been in the field.
+              </p>
+            </div>
+            <div class="services">
+              <article class="service-card reveal">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>
+                </div>
+                <h3>Risk Assessment</h3>
+                <p>Spotting threats and weighing the risks, my favorite topic in class.</p>
+              </article>
+              <article class="service-card reveal">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg>
+                </div>
+                <h3>Access Control</h3>
+                <p>Studying DAC, MAC, and RBAC and how they decide who can reach what.</p>
+              </article>
+              <article class="service-card reveal">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <h3>Incident Response</h3>
+                <p>Learning how to detect, contain, and recover from security incidents.</p>
+              </article>
+              <article class="service-card reveal">
+                <div class="service-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8a2 2 0 0 0-3 0z"/><path d="M12 15 9 12c.5-3 2-6.5 7-8 0 0 2 7-3 11z"/><path d="M9 12H6c0-2 1-4 3-5M12 15v3c2-1 4-3 5-5h-3"/></svg>
+                </div>
+                <h3>Networking Basics</h3>
+                <p>Basic networking, troubleshooting, and Ethernet/UTP cable termination.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="section section-alt" id="skills">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Skills</p>
+            <h2>My technical toolkit</h2>
+            <p class="section-sub">
+              What I've learned in class and used in my projects.
+            </p>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-card reveal">
+              <h3>Cybersecurity</h3>
+              <div class="tags">
+                <span>Threat identification &amp; risk assessment</span><span>Access control (DAC, MAC, RBAC)</span><span>Incident response &amp; recovery</span><span>Ethical hacking basics</span><span>Vulnerability scanning &amp; reporting</span>
+              </div>
+            </div>
+            <div class="skill-card reveal">
+              <h3>Networking</h3>
+              <div class="tags">
+                <span>Basic networking</span><span>Network troubleshooting</span><span>Ethernet/UTP cabling</span>
+              </div>
+            </div>
+            <div class="skill-card reveal">
+              <h3>Programming &amp; Web</h3>
+              <div class="tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>C#</span><span>.NET</span><span>React</span><span>Three.js</span><span>SQL Server</span>
+              </div>
+            </div>
+            <div class="skill-card reveal">
+              <h3>Tools &amp; Soft Skills</h3>
+              <div class="tags">
+                <span>Git &amp; GitHub</span><span>Canva</span><span>MS Office</span><span>Public speaking</span><span>Teamwork</span><span>Event planning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Projects</p>
+            <h2>Work I've built</h2>
+            <p class="section-sub">
+              Projects from my coursework and personal practice.
+            </p>
+          </div>
+
+          <div class="projects-grid">
+            <a href="https://github.com/jcbuconut227/Anatomixs" target="_blank" rel="noopener" class="project-card reveal">
+              <div class="project-top">
+                <div class="project-icon gradient-violet">A</div>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </div>
+              <h3>Anatomia</h3>
+              <p>
+                An interactive 3D anatomy learning web app with teacher and student dashboards, classrooms, quizzes, and levels, points, and badges. Built as my capstone.
+              </p>
+              <div class="tags">
+                <span>React</span><span>Three.js</span><span>Capstone</span>
+              </div>
+            </a>
+            <article class="project-card reveal">
+              <div class="project-top">
+                <div class="project-icon gradient-sky">S</div>
+                
+              </div>
+              <h3>SariSync</h3>
+              <p>
+                A POS and inventory management desktop app for sari-sari store owners, with supplier tracking, order history, and a sales dashboard.
+              </p>
+              <div class="tags">
+                <span>C#</span><span>.NET</span><span>Windows Forms</span><span>SQL Server</span>
+              </div>
+            </article>
+            <article class="project-card reveal">
+              <div class="project-top">
+                <div class="project-icon gradient-emerald">P</div>
+                
+              </div>
+              <h3>This Portfolio</h3>
+              <p>
+                The responsive portfolio site you're on, built to show my projects, skills, and certifications.
+              </p>
+              <div class="tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vite</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section class="section section-alt" id="experience">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Education &amp; certifications</p>
+            <h2>Where I've learned</h2>
+          </div>
+
+          <ol class="timeline reveal">
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>BS Information Technology</h3>
+                  <span class="period">2023 — Present</span>
+                </div>
+                <p class="company">College of Our Lady of Mercy</p>
+                <p>
+                  Studying programming, networking, databases, and cybersecurity. Now in 4th year.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>Vice Chairman, SPCY</h3>
+                  <span class="period">2023 — Present</span>
+                </div>
+                <p class="company">Sub Parish Commission on Youth</p>
+                <p>
+                  Lead event planning and logistics for parish youth programs.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>Responsible AI in Everyday Life</h3>
+                  <span class="period">Apr 2026</span>
+                </div>
+                <p class="company">ICT Literacy and Competency Development Bureau, DICT Bulacan</p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>Introduction to Cybersecurity</h3>
+                  <span class="period">Nov 2025</span>
+                </div>
+                <p class="company">Cisco Networking Academy</p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>Stay Safe Online: Cybersecurity Basics</h3>
+                  <span class="period">Nov 2025</span>
+                </div>
+                <p class="company">ICT Literacy and Competency Development Bureau, DICT Bulacan</p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>The Road to Digitalization Through Cybersecurity</h3>
+                  <span class="period">Oct 2025</span>
+                </div>
+                <p class="company">ICT Literacy and Competency Development Bureau, DICT Bulacan</p>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-card">
+                <div class="timeline-head">
+                  <h3>Senior High School</h3>
+                  <span class="period">2023</span>
+                </div>
+                <p class="company">St. Francis de Assisi Montessori School</p>
+                <p>
+                  Graduated with honors.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Get in touch</p>
+            <h2>Let's connect</h2>
+            <p class="section-sub">
+              Looking for an OJT or part-time opportunity, or just want to talk cybersecurity? Message me.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-info reveal">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                </div>
+                <div>
+                  <span>Email</span>
+                  <a href="mailto:alvarojohncarl495@gmail.com">alvarojohncarl495@gmail.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <span>Location</span>
+                  <p>Plaridel, Bulacan, Philippines</p>
+                </div>
+              </div>
+              <div class="contact-socials">
+                <a href="https://github.com/jcbuconut227" aria-label="GitHub" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.5-3.6 4.9 4.9 0 0 0-.1-3.6s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.1 1.2 4.9 1.6 4.9 1.6a4.9 4.9 0 0 0-.1 3.6A5.2 5.2 0 0 0 3.3 8.8c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/john-carl-alvaro-2b11053b2/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-4 0v6h-4v-6a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://t.me/+639956118861" aria-label="Telegram" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </a>
+                <a href="viber://add?number=639956118861" aria-label="Viber">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.7-.8L3 21l1.9-5.1A8.4 8.4 0 1 1 21 11.5z"/><path d="M9.6 8.3c0 3.1 2.1 5.1 5.1 5.1l1-1.2-1.8-1.2-.9.6a3.4 3.4 0 0 1-1.9-1.9l.6-.9-1.2-1.8z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <form class="contact-form reveal" id="contact-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Tell me about an opportunity, or just say hi..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit-btn">Send via email</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="logo-mark sm">JC</span>
+          <span>© <span id="year"></span> John Carl F. Alvaro. All rights reserved.</span>
+        </div>
+        <nav class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Work</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#home" class="back-top-link">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <button class="back-top" id="back-top" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
