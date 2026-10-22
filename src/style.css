@@ -1290,3 +1290,143 @@ body,
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* ========== Loading screen ========== */
+body.is-loading { overflow: hidden; }
+.loader {
+  --lp: #b6ff3b;
+  --lp2: #55ff87;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #060908;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.loader.hide { opacity: 0; visibility: hidden; }
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+}
+
+.loader-code {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--lp);
+  white-space: pre;
+}
+.loader-stack { display: grid; grid-template-rows: auto 1fr; gap: 0.75rem; min-height: 0; }
+.loader-stack.even { grid-template-rows: 1fr 1fr; }
+.pane {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(182, 255, 59, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+}
+.pane::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.65rem;
+  color: #060908;
+  background: var(--lp);
+}
+.pane-body { padding-top: 1.4rem; }
+.pane.banner { padding: 1.9rem 0.8rem 0.8rem; color: var(--lp2); }
+.pane.matrix canvas { display: block; width: 100%; height: 100%; }
+.pane.log { display: flex; flex-direction: column; justify-content: flex-end; padding: 1.9rem 0.8rem 0.6rem; }
+.pane.log .warn { color: #ffd23f; }
+.loader-col { animation: code-scroll 32s linear infinite; padding: 1.9rem 0.8rem 0; }
+@keyframes code-scroll { to { transform: translateY(-50%); } }
+@media (max-width: 760px) {
+  .loader-code { grid-template-columns: 1fr 1fr; }
+  .loader-stack.right { display: none; }
+}
+
+.loader-box {
+  position: relative;
+  z-index: 1;
+  width: min(640px, 90vw);
+  padding: 2.5rem 2.5rem 2rem;
+  text-align: center;
+  background: rgba(6, 9, 8, 0.9);
+  border: 2px solid var(--lp);
+  box-shadow: 0 0 40px rgba(182, 255, 59, 0.25), inset 0 0 30px rgba(182, 255, 59, 0.08);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.loader-box.granted {
+  background: rgba(182, 255, 59, 0.1);
+  box-shadow: 0 0 90px rgba(182, 255, 59, 0.5), inset 0 0 40px rgba(182, 255, 59, 0.15);
+  animation: granted-pop 0.45s ease;
+}
+@keyframes granted-pop { 0% { transform: scale(0.96); } 60% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+.loader-logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto;
+  font-size: 1.4rem;
+  border-radius: 18px;
+  animation: loader-pulse 1.6s ease-in-out infinite;
+}
+@keyframes loader-pulse {
+  0%, 100% { box-shadow: 0 8px 20px rgba(166, 255, 58, 0.24); }
+  50% { box-shadow: 0 0 44px rgba(166, 255, 58, 0.6); }
+}
+
+.loader-title {
+  margin: 1.4rem 0 1.6rem;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: clamp(1.7rem, 6vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--lp);
+  text-shadow: 0 0 18px rgba(182, 255, 59, 0.6);
+}
+.loader-dots {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: loader-dots 1.2s steps(4) infinite;
+}
+.loader-dots::before { content: "..."; }
+.loader-dots.off { display: none; }
+@keyframes loader-dots { to { width: 3ch; } }
+
+.loader-bar { height: 26px; padding: 3px; border: 2px solid var(--lp); }
+.loader-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--lp), var(--lp2));
+  box-shadow: 0 0 14px var(--lp);
+}
+.loader-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.9rem;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.85rem;
+  color: #9bb19f;
+}
+
+@media (prefers-reduced-motion: reduce) { .loader { display: none; } }
