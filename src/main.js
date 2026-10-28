@@ -1,3 +1,17 @@
+import certResponsibleAi from "./assets/certificates/dict-responsible-ai.jpg";
+import certCisco from "./assets/certificates/cisco-intro-to-cybersecurity.jpg";
+import certStaySafe from "./assets/certificates/dict-stay-safe-online.jpg";
+import certRoadDigital from "./assets/certificates/dict-road-to-digitalization.jpg";
+import certFelta from "./assets/certificates/felta-robotics-workshop.jpg";
+
+const certImages = {
+  "dict-responsible-ai": certResponsibleAi,
+  "cisco-intro-to-cybersecurity": certCisco,
+  "dict-stay-safe-online": certStaySafe,
+  "dict-road-to-digitalization": certRoadDigital,
+  "felta-robotics-workshop": certFelta,
+};
+
 // ========== Theme ==========
 const root = document.documentElement;
 const themeToggle = document.getElementById("theme-toggle");
@@ -63,15 +77,28 @@ backTop?.addEventListener("click", () => {
 
 // ========== Scroll reveal ==========
 const revealEls = document.querySelectorAll(".reveal");
+const pendingReveal = new Set();
+let revealObserver = null;
+
+function showReveal(el) {
+  el.classList.add("is-visible");
+  revealObserver?.unobserve(el);
+}
+function releaseReveals() {
+  pendingReveal.forEach(showReveal);
+  pendingReveal.clear();
+}
 
 if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
+  revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
+        if (!entry.isIntersecting) return;
+        if (document.body.classList.contains("is-loading")) {
+          pendingReveal.add(entry.target); // wait until the loading screen is gone
+          return;
         }
+        showReveal(entry.target);
       });
     },
     { threshold: 0.12 }
@@ -154,6 +181,7 @@ if (loader) {
       timers.forEach(clearInterval);
       loader.classList.add("hide");
       document.body.classList.remove("is-loading");
+      releaseReveals();
       setTimeout(() => loader.remove(), 800);
     }
     setTimeout(finish, 9000); // failsafe
@@ -304,4 +332,73 @@ if (loader) {
     }
     requestAnimationFrame(tick);
   }
+}
+
+// ========== Certificate viewer ==========
+const certModal = document.getElementById("cert-modal");
+
+if (certModal) {
+  const certImg = document.getElementById("cert-modal-img");
+  const certTitle = document.getElementById("cert-modal-title");
+  const certOpen = document.getElementById("cert-modal-open");
+  const certError = document.getElementById("cert-modal-error");
+  const certClose = certModal.querySelector(".cert-modal-close");
+  let lastTrigger = null;
+
+  function openCert(link) {
+    const href = certImages[link.dataset.cert] || "";
+    const card = link.closest(".project-card");
+    const name = card?.querySelector("h3")?.textContent.trim() || "Certificate";
+    lastTrigger = link;
+    certTitle.textContent = name;
+    certOpen.href = href;
+    // data: URLs can't be opened in a new tab directly, so use a blob URL
+    if (href.startsWith("data:")) {
+      fetch(href)
+        .then((r) => r.blob())
+        .then((b) => { certOpen.href = URL.createObjectURL(b); })
+        .catch(() => {});
+    }
+    certError.hidden = true;
+    certImg.hidden = false;
+    certImg.alt = `${name} certificate`;
+    certImg.src = href;
+    certModal.hidden = false;
+    document.body.classList.add("modal-open");
+    certClose.focus();
+  }
+
+  function closeCert() {
+    certModal.hidden = true;
+    document.body.classList.remove("modal-open");
+    certImg.removeAttribute("src");
+    lastTrigger?.focus();
+  }
+
+  certImg.addEventListener("error", () => {
+    if (!certImg.getAttribute("src")) return;
+    certImg.hidden = true;
+    certError.hidden = false;
+  });
+
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest?.(".cert-link");
+    if (link) {
+      e.preventDefault();
+      openCert(link);
+    } else if (e.target.closest?.("[data-close]") && !certModal.hidden) {
+      closeCert();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (certModal.hidden) return;
+    if (e.key === "Escape") closeCert();
+    if (e.key === "Tab") {
+      const focusable = [certClose, certOpen];
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 }
