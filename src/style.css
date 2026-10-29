@@ -1583,3 +1583,24 @@ body.modal-open { overflow: hidden; }
 .cert-modal-body { flex: 1; min-height: 0; padding: 1rem; overflow: auto; }
 .cert-modal-body img { display: block; width: 100%; height: auto; border-radius: 8px; background: #fff; }
 .cert-modal-error { padding: 2rem 1rem; text-align: center; color: var(--text-muted); }
+
+/* ========== Projects: one per row ========== */
+.projects-grid.projects-list { grid-template-columns: 1fr; }
+.project-wide { display: grid; gap: 1.5rem; }
+.project-wide .project-body { display: flex; flex-direction: column; min-width: 0; }
+.project-media {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.project-media img { display: block; width: 100%; height: auto; }
+.project-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+.btn-sm { padding: 0.6rem 1.1rem; font-size: 0.88rem; }
+@media (min-width: 900px) {
+  .project-wide:has(.project-media) {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+  }
+}
