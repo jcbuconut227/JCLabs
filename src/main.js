@@ -4,6 +4,16 @@ import certStaySafe from "./assets/certificates/dict-stay-safe-online.jpg";
 import certRoadDigital from "./assets/certificates/dict-road-to-digitalization.jpg";
 import certFelta from "./assets/certificates/felta-robotics-workshop.jpg";
 
+// ========== Always start at the top on reload ==========
+if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+const navEntry = performance.getEntriesByType("navigation")[0];
+if (navEntry && navEntry.type === "reload") {
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo(0, 0);
+  window.addEventListener("load", () => window.scrollTo(0, 0), { once: true });
+}
+
+
 const certImages = {
   "dict-responsible-ai": certResponsibleAi,
   "cisco-intro-to-cybersecurity": certCisco,
@@ -135,20 +145,65 @@ if ("IntersectionObserver" in window && skillFills.length) {
 const form = document.getElementById("contact-form");
 const submitBtn = document.getElementById("submit-btn");
 
-form?.addEventListener("submit", (e) => {
+// Web3Forms: get your free access key at https://web3forms.com and paste it below.
+// (This key is meant to be public. It can only send messages to your own email.)
+const WEB3FORMS_KEY = "YOUR_ACCESS_KEY";
+const formStatus = document.getElementById("form-status");
+
+function setStatus(text, type) {
+  if (!formStatus) return;
+  formStatus.textContent = text;
+  formStatus.className = "form-status" + (type ? " " + type : "");
+}
+
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!submitBtn) return;
   const data = new FormData(form);
-  const subject = `Portfolio message from ${data.get("name")}`;
-  const body = `${data.get("message")}\n\n— ${data.get("name")} (${data.get("email")})`;
-  window.location.href =
-    "mailto:alvarojohncarl495@gmail.com" +
-    `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  if (data.get("botcheck")) return; // spam trap: real people never tick this
+  const name = String(data.get("name") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const message = String(data.get("message") || "").trim();
+  const subject = `Portfolio message from ${name}`;
+
+  // Until a key is set, fall back to opening the visitor's email app
+  if (WEB3FORMS_KEY === "YOUR_ACCESS_KEY") {
+    window.location.href =
+      "mailto:alvarojohncarl495@gmail.com" +
+      `?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message + "\n\n— " + name + " (" + email + ")")}`;
+    return;
+  }
+
   const original = submitBtn.textContent;
-  submitBtn.textContent = "Opening your email app...";
-  setTimeout(() => {
-    submitBtn.textContent = original || "Send via email";
-  }, 3000);
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+  setStatus("");
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject,
+        from_name: "JCLabs Portfolio",
+        name,
+        email,
+        message,
+      }),
+    });
+    const json = await res.json();
+    if (res.ok && json.success) {
+      form.reset();
+      setStatus("Thanks! Your message was sent. I'll get back to you soon.", "success");
+    } else {
+      setStatus(json.message || "Something went wrong. Please try again.", "error");
+    }
+  } catch {
+    setStatus("Network error. Please check your connection and try again.", "error");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = original;
+  }
 });
 
 // ========== Footer year ==========

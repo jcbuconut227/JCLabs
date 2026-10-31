@@ -11,7 +11,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="JCLabs — John Carl Alvaro | Cybersecurity Student" />
     <meta property="og:description" content="Portfolio of John Carl Alvaro (JC), a 4th-year BSIT student focused on cybersecurity, with Cisco and DICT certifications." />
-    <title>JCLabs</title>
+    <title>JCLabs — John Carl Alvaro | Cybersecurity Student</title>
     <meta name="theme-color" content="#080b0a" />
     <meta name="author" content="John Carl Alvaro" />
     <meta property="og:type" content="website" />
@@ -125,7 +125,7 @@
               View my projects
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
-            <a href="/resume.pdf" download class="btn btn-secondary">
+            <a href="/Alvaro,JohnCarlF_Resume.pdf" download="Alvaro,JohnCarlF_Resume.pdf" class="btn btn-secondary">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
               Download resume
             </a>
@@ -305,18 +305,20 @@
                 </div>
               </div>
             </article>
-            <article class="project-card project-wide reveal">
-              <!-- To add a screenshot, put it in src/assets/projects/ and add above the project-body div:
-              <div class="project-media"><img src="/src/assets/projects/NAME.jpg" alt="NAME screenshot" loading="lazy" /></div> -->
+                                    <article class="project-card project-wide reveal">
+              <div class="project-media">
+                <img src="/src/assets/projects/portfolio.jpg" alt="JCLabs portfolio home screen with my photo and introduction" width="1920" height="1080" loading="lazy" decoding="async" />
+              </div>
               <div class="project-body">
                 <h3>JCLabs</h3>
                 <p>
-                  This portfolio site: responsive, themed for cybersecurity, and built to show my projects, skills, and certificates.
+                  My personal portfolio, built from scratch without a UI framework. It has a dark cybersecurity theme with a light mode toggle, an animated loading screen, a popup viewer for my certificates, and a layout that adapts to phones and desktops.
                 </p>
-                <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vite</span></div>
-              <div class="project-actions">
-                <a class="btn btn-secondary btn-sm" href="https://github.com/jcbuconut227/MyPortfolio" target="_blank" rel="noopener">GitHub</a>
-              </div>
+                <div class="tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Vite</span><span>Vercel</span></div>
+                <div class="project-actions">
+                  <a class="btn btn-primary btn-sm" href="https://jclabs-dev.vercel.app" target="_blank" rel="noopener">Live demo</a>
+                  <a class="btn btn-secondary btn-sm" href="https://github.com/jcbuconut227/JCLabs" target="_blank" rel="noopener">GitHub</a>
+                </div>
               </div>
             </article>
           </div>
@@ -498,7 +500,9 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Tell me about an opportunity, or just say hi..." required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary" id="submit-btn">Send via email</button>
+              <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" class="btn btn-primary" id="submit-btn">Send message</button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
