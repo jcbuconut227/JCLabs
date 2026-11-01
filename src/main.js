@@ -147,7 +147,7 @@ const submitBtn = document.getElementById("submit-btn");
 
 // Web3Forms: get your free access key at https://web3forms.com and paste it below.
 // (This key is meant to be public. It can only send messages to your own email.)
-const WEB3FORMS_KEY = "YOUR_ACCESS_KEY";
+const WEB3FORMS_KEY = "fcfa9382-5809-4072-9119-78d600058d24";
 const formStatus = document.getElementById("form-status");
 
 function setStatus(text, type) {
