@@ -1610,3 +1610,7 @@ body.modal-open { overflow: hidden; }
 .form-status { min-height: 1.4em; margin-top: 0.9rem; font-size: 0.92rem; }
 .form-status.success { color: var(--primary-2); }
 .form-status.error { color: #ff6b6b; }
+
+/* ========== Skills: featured card ========== */
+.skill-featured { border-color: rgba(182, 255, 59, 0.35); box-shadow: 0 0 40px rgba(182, 255, 59, 0.06); }
+@media (min-width: 640px) { .skill-featured { grid-column: 1 / -1; } }
