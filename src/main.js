@@ -1,3 +1,4 @@
+import certDigitalCitizenship from "./assets/certificates/dict-digital-citizenship.jpg";
 import certResponsibleAi from "./assets/certificates/dict-responsible-ai.jpg";
 import certCisco from "./assets/certificates/cisco-intro-to-cybersecurity.jpg";
 import certStaySafe from "./assets/certificates/dict-stay-safe-online.jpg";
@@ -15,6 +16,7 @@ if (navEntry && navEntry.type === "reload") {
 
 
 const certImages = {
+  "dict-digital-citizenship": certDigitalCitizenship,
   "dict-responsible-ai": certResponsibleAi,
   "cisco-intro-to-cybersecurity": certCisco,
   "dict-stay-safe-online": certStaySafe,
