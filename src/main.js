@@ -239,9 +239,9 @@ if (loader) {
       loader.classList.add("hide");
       document.body.classList.remove("is-loading");
       releaseReveals();
-      setTimeout(() => loader.remove(), 800);
+      setTimeout(() => loader.remove(), 1000);
     }
-    setTimeout(finish, 9000); // failsafe
+    setTimeout(finish, 12000); // failsafe
 
     const el = (cls, title, parent) => {
       const d = document.createElement("div");
@@ -384,7 +384,7 @@ if (loader) {
         dots.classList.add("off");
         msg.textContent = "> welcome";
         box.classList.add("granted");
-        setTimeout(finish, 1000);
+        setTimeout(finish, 2000);
       }
     }
     requestAnimationFrame(tick);
