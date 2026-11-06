@@ -239,9 +239,9 @@ if (loader) {
       loader.classList.add("hide");
       document.body.classList.remove("is-loading");
       releaseReveals();
-      setTimeout(() => loader.remove(), 1000);
+      setTimeout(() => loader.remove(), 600);
     }
-    setTimeout(finish, 12000); // failsafe
+    setTimeout(finish, 8000); // failsafe
 
     const el = (cls, title, parent) => {
       const d = document.createElement("div");
@@ -362,8 +362,8 @@ if (loader) {
       [50, "> decrypting profile"],
       [75, "> loading portfolio"],
     ];
-    const START_DELAY = 1200; // short pause before the bar starts
-    const DURATION = 1400;
+    const START_DELAY = 800; // short pause before the bar starts
+    const DURATION = 900;
     const start = performance.now() + START_DELAY;
     let pageLoaded = document.readyState === "complete";
     if (!pageLoaded) window.addEventListener("load", () => { pageLoaded = true; }, { once: true });
@@ -384,7 +384,7 @@ if (loader) {
         dots.classList.add("off");
         msg.textContent = "> welcome";
         box.classList.add("granted");
-        setTimeout(finish, 2000);
+        setTimeout(finish, 800);
       }
     }
     requestAnimationFrame(tick);
